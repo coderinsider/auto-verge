@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600&display=swap');
+:root{
+    --markColor1: #E4F1FF;
+    --markColor2: #e9ecef;
+    --markColor3: #f4f5f7;
+    --markColor4: #4392F1;
+    --markColor5: #6CB4FF;
+    --markColor6: #EE6C4D;
+    --markColor7: #161718;
+    --markColor8: #434549; /* Text Color */
+    --markColor9: #5A5C61;
+
+    --markColor10: #717379;
+    --markColor11: #878991;
+    --markColor12: #9EA0A9;
+
+    --markColor13: #B4B7C2;
+    --markColor14: #CBCEDA;
+    --markColor15: #E1E5F2;
+
+    --markColor16: #f8f9fc; /* Background */
+}
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    color: var(--markColor8);
+    font-family: 'Cairo', sans-serif !important;
+}
+.app-logo-name h3 {
+    color: #fff;
+    font-size: 1.5em;
+    margin: 0;
+}
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;        }
+
+.sidenav a {
+/*    padding: 8px 8px 8px 32px;*/
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+p, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+a {
+    color: inherit;
+}
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#dashboardright {
+    transition: margin-left .5s;
+    /*padding: 16px;*/
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+.dashright-headerbar {
+    cursor:  pointer;
+}
+.app-logo-view-head {
+    border-bottom: 1px solid #ddd;
+    height: 50px;
+    background: #6CB4FF;
+    display: flex;
+    align-items: center;
+}
+.nav-menu ul li a {
+    color: #fff;
+    font-size: 1.2em;
+}
+.custombreadcrumb {
+    padding: 0 15px;
+}
+.custombreadcrumb li a {
+    font-size:1.2em;
+    text-decoration: none;
+    margin: 0 !important
+}
+.custombreadcrumb .bread-item a > h4, .custombreadcrumb .bread-item a > svg {
+    line-height: 50px;
+}
+.bread-item a > svg {
+    height: auto !important;
+    margin: 0 10px;
+}
+.bread-item a {
+    display: flex;
+}
+.headuser {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-left: 7.5px;
+    background: #4392F1;
+}
+.bodyuser {
+    margin-top: 3px;
+    width: 30px;
+    height: 15px;
+    border-radius: 15px;
+    background: #4392F1;
+}
+.dashboardheadright  {
+    background: #fff;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+.accountuserright {
+    margin-right: 15px;
+    margin-top: 5px;
+}
+.accounuserpanel {
+    display: flex;
+}
+.accountusercontent {
+    margin-left:  10px;
+}
+.accountusername p, .accountuserrole p {
+    font-size: 0.8em;
+}
+.accountuserrole p {
+    font-weight: 600;
+}
+.nav-name-text h3 {
+    font-size: 1.5em;
+}
+@media screen and (min-width: 768px) {
+    .backend-head-box {
+        display:  flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .nav-post-add {
+        margin-left:  20px;
+    }
+}
+.backend-head-box {
+    padding: 30px 15px;
+}
+.nav-post-add a {
+    color:  #000;
+    padding: 2px 25px;
+    text-decoration: none;
+    background: #4392F1;
+    color: #fff;
+    border: 2px solid #6CB4FF;
+    border-radius: 5px;
+}
+.table-box-panel {
+    padding: 30px 0;
+    background:  #fff;
+    margin-right: 15px;
+    border-radius: 5px;
+}
+.table-box-panel table {
+    width: 100%;
+}
+.isactivestatus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 8px;
+    border: 2px solid #6CB4FF;
+    border-radius: 15px;
+    color: #6CB4FF;
+    font-weight: 600;
+}
+.isdeactivatestatus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 8px;
+    border: 2px solid #ed4545;
+    border-radius: 15px;
+    color: #ed4545;
+    font-weight: 600;    
+}
+.moreactions {
+    display: flex;
+    color: #6CB4FF;
+}
+.editme {
+    border: 2px solid #6cB4ff;
+    padding: 2px 15px;
+    border-radius: 15px;
+}
+.deleteme {
+    margin-left: 10px;
+    border: 2px solid #ed4545;
+    padding: 2px 15px;
+    border-radius: 15px;
+    color: #ed4545;
+}
+.markappboxing {
+    width: calc(100% - 15px);
+    margin-top: 30px;
+    margin-right: 15px !important;
+    padding:  20px;
+    background: #fff;
+    box-shadow: 0 0 8px 0 #ddd;
+}
+.markappheader {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+}
+.form-group-flex {
+    display: flex;
+    justify-content: space-between;
+}
+.form-group-flex .custom-form-group {
+    width: 48%;
+}
+.custom-form-group {
+    margin-top:  15px;
+}
+.custom-form-group input {
+    width:  100%;
+}
+.custom-form-group label {
+    margin-bottom: 5px;
+}
+.action-button-process {
+    display: flex;
+}
+.markappfooter {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #ddd;
+}
+.isAction {
+    background: #4392F1;
+    color: #fff;
+    border: 2px solid #6CB4FF;
+}
+.custom-modal-title {
+    color:  #000;
+}
+.asktouser p {
+    font-size:  1.5em;
+    display: flex;
+    justify-content: center;
+    padding:  20px 0;
+}
+ol, ul {
+    padding: 0;
+}
+li.navmenuactive, li.navmenudeactive {
+    display: flex;
+    padding: 8px 10px;
+    align-items: center;
+    border-top: 1px solid #ddd;
+}
+li.navmenuactive  a, li.navmenudeactive a {
+    padding-left: 10px;
+    white-space: nowrap;
+}
+li.navmenuactive {
+    background: #6CB4FF;
+}
+.navlists li > img {
+    width:  30px;
+    height: 30px;
+}
+.success, .failed {
+    margin-top: 15px;
+    margin-right: 15px;
+}
+.success {
+    font-size: 1.2em;
+    border: 2px solid #4392F1;
+    padding: 5px;
+    background: #6CB4FF;
+    display: flex;
+    align-items: center;    
+}
+.success p {
+    font-weight: 600;
+    color: #006ef3;
+}
+.failed {
+    font-size: 1.2em;
+    border: 2px solid #ed4545;
+    padding: 5px;
+    background: #ed454552;
+    display:  flex;
+    align-items: center;
+}
+.failed p, .fail-icon {
+    color: #ed4545 !important;
+    font-weight: 600;    
+}
+.showmessage p {
+    margin-left: 7px;
+}

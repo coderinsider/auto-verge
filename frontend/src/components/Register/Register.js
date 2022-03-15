@@ -1,27 +1,31 @@
 import React, { useEffect, useState } from 'react';
-
+import  { Redirect, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 const Register = () => {
-
-	let [username, setUsername] = useState();
+	let navigate = useNavigate();
+	let [name, setName] = useState();
 	let [email, setEmail] = useState();
 	let [password, setPassword] = useState();
-	const saveUserRecord = (e) => {
+	const saveUserRecord = async (e) => {
 		e.preventDefault();
 		const newUserOne = {
-			name: username,
-			email: email,
-			password: password
+			name,
+			email,
+			password
 		}
 		console.log(newUserOne);
 
+		await axios.post('http://127.0.0.01:8000/api/register', newUserOne)
+		.then((resp) => {
+			if(resp.data.status) {
+				// Redirect to dashboard ui
+				return navigate('/admin/dashboard');
+			} else {
+				console.log(resp.data);
+			}
+		});
+		
 	}
-	useEffect(() => {
-		fetch('http://127.0.0.1:8000/user-register', {
-			method: "GET"
-		}, [])
-		.then((res) => res.json())
-		.then((data) => console.log(data));
-	})
 	return (
 		<>
 			<div className="custom-card card">
@@ -36,8 +40,9 @@ const Register = () => {
 								Username
 							</label>
 							<input 
+							name="name"
 							onChange={
-								e => setUsername(e.target.value)
+								(e) => setName(e.target.value)
 							}
 							type="text" className="form-control" placeholder="Enter Username"/>
 						</div>
@@ -45,9 +50,10 @@ const Register = () => {
 							<label>
 								Email
 							</label>
-							<input 
+							<input
+							name="email"
 							onChange={
-								e => setEmail(e.target.value)
+								(e) => setEmail(e.target.value)
 							}
 							type="email" className="form-control" placeholder="Enter Email"/>
 						</div>
@@ -56,8 +62,9 @@ const Register = () => {
 								Password
 							</label>
 							<input 
+							name="password"
 							onChange={
-								e => setPassword(e.target.value)
+								(e) => setPassword(e.target.value)
 							}
 							type="password" className="form-control" placeholder="Enter Password"/>
 						</div>

@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') . $page_title }}</title>
+        <title>{{ config('app.name', 'Laravel') }}</title>
         <!-- Styles -->
         <meta name="theme-color" content="#eaedef" />
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('uploads/apple-touch-icon.png') }}" />
@@ -28,10 +28,10 @@
             <article id="dashboardleft" style="width: 50px;background: #4392F1; height: 100vh;" class="sidenav">
                 <div class="app-logo-view-head">
                     <div class="app-logo-img" style="margin: 0 10px;width: 30px;">
-                        <img src="{{ asset('uploads/zaychin-icon-sm.png') }}">
+                        <img src="https://laravel.com/img/logomark.min.svg">
                     </div>
                     <div class="app-logo-name justshowme">
-                        <h3>Zay Chin</h3>
+                        <h3>Auto</h3>
                     </div>
                 </div>
                 @include('admin.inc.nav-menu')

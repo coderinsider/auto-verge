@@ -12,7 +12,7 @@ class UserManagementController extends Controller
         $this->user = $user;
     }
     public function userregister(Request $req) {
-        $userName = $req->input('username') ?? null;
+        $userName = $req->input('name') ?? null;
         $password = $req->input('password') ?? null;
         $email = $req->input('email') ?? null;
         if($userName != null && $password != null && $email != null) {
@@ -31,7 +31,7 @@ class UserManagementController extends Controller
                 return response()->json(['message' => 'Your current email is already taken in our records'], 200);
             }    
             $createNew = $this->user->create($dataRecord);       
-            return response()->json(['data' => $createNew], 200); 
+            return response()->json(['status' => true, 'data' => $createNew], 200); 
         } else {
             return response()->json(['message' => "Please insert Request data"], 200);
         }
