@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
-
+use Redirect;
 class RegisteredUserController extends Controller
 {
     /**
@@ -38,7 +38,11 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-
+        // Validation name exists on our records.
+        $findName = User::where('name', $request->name);
+        if($findName->exists()) {
+            return Redirect::back()->withErrors(['failmessage' => 'Your current name is already taken']);
+        }
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
