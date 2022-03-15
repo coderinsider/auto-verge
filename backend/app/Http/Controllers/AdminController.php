@@ -13,4 +13,11 @@ class AdminController extends Controller
         $data['current_page'] = 'admindashboard';
         return view('admin.dashboard.index', $data);
     }
+
+    public function usermanagement() {
+        $data = [];
+        $data['page_title'] = "User Manage";
+        $data['current_page'] = 'usermanage';
+        return view('admin.users.index', $data);
+    }
 }
