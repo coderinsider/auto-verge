@@ -19,7 +19,7 @@ Route::get('/', function () {
 Route::get('/admin/dashboard', 'AdminController@admindashboard')->middleware('auth');
 Route::get('/admin/users-list', 'AdminController@usermanagement')->middleware('auth');
 Route::get('/admin/users-list/create', 'AdminController@usermanagementcreate')->middleware('auth');
-
+Route::get('/admin/user-list/edit/{id}', 'AdminController@usermanagementedit')->middleware('auth');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

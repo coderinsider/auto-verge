@@ -2,7 +2,8 @@ import React, {useEffect, useState} from 'react';
 import UserListEach from './UserListEach';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-export default function UserListCreate() {
+export default function UserEdit({dataId}) {
+	const  [currentData, setCurrentData] = useState();
 	const [gender, setGender]  = useState('male');
 	const [name, setName] = useState('');
 	const [phone, setPhone] = useState('');
@@ -24,18 +25,36 @@ export default function UserListCreate() {
 		phone,
 		email,
 		password
-	}
-	const createUserRecord  = (e) => {
-		const url = "http://127.0.0.1:8000/";
+	};
+	const url = "http://127.0.0.1:8000/"; ///userlists/edit/{id}
+	useEffect(async() => {
+		await axios.get(`${url}api/userlists/edit/current/${dataId}`)
+		.then((resp) => {
+			setCurrentData(resp.data.data);
+			
+			setGender('male');
+			setName(resp.data.data.name);
+			setPhone(resp.data.data.phone);
+			setEmail(resp.data.data.email);
+		})
+		.catch((error) => {
+			console.log(`Error ${error}`);
+		});
+	},[])
+	console.log(userNew);
+	const updateUserRecord = (e) => {
+		const url = "http://127.0.0.1:8000/"; ///userlists/edit/{id}
 		e.preventDefault();
 		const config = {
 			headers: {
 				'Content-Type': 'application/json'
 			}
 		};
-        axios.post(`${url}api/userlists/create`, userNew, config)
+        axios.post(`${url}api/userlists/edit/${dataId}`, userNew, config)
         .then((resp) => {
         	if(!resp.data.status) {
+        		console.log("FALSE");
+        		console.log(resp);
         		setErrors({
         			name: resp.data.name,
         			email: resp.data.email,
@@ -46,6 +65,8 @@ export default function UserListCreate() {
         		setSuccess('');	
         	}
         	if(resp.data.status) {
+        		console.log('TRUE');
+        		console.log(resp.data);
 	        	setErrors({
 	    			name: '',
 	    			email: '',
@@ -68,7 +89,7 @@ export default function UserListCreate() {
 
             console.log(`Error: ${error}`);
         });
-    }
+	}
 	return (
 		<>
 			<div className="markappwrapper">
@@ -138,7 +159,7 @@ export default function UserListCreate() {
 		            <div className="markappfooter">
 		                <div className="action-button-process">
 		                    <div className="form-group">
-		                        <button type="button" className="isAction form-control" data-bs-toggle="modal" data-bs-target={"#myModal"}>Create New</button>		              
+		                        <button type="button" className="isAction form-control" data-bs-toggle="modal" data-bs-target={"#myModal"}>Update</button>		              
 		                        <div className="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModal" aria-hidden="true">
 		                            <div className="modal-dialog">
 		                                <div className="modal-content">
@@ -153,7 +174,7 @@ export default function UserListCreate() {
 		                                    </div>
 		                                    <div className="modal-footer">
 		                                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-		                                        <button type="button" className="btn btn-primary" onClick={createUserRecord}>Create</button>
+		                                        <button type="button" className="btn btn-primary" onClick={updateUserRecord}>Update</button>
 
 		                                    </div>
 		                                </div>
@@ -169,6 +190,7 @@ export default function UserListCreate() {
 	);
 }
 
-if (document.getElementById('user-manage-create')) {
-    ReactDOM.render(<UserListCreate />, document.getElementById('user-manage-create'));
+if (document.getElementById('user-manage-edit')) {
+	var data = document.getElementById('user-manage-edit').getAttribute('dataId');
+    ReactDOM.render(<UserEdit dataId={data}/>, document.getElementById('user-manage-edit'));
 }

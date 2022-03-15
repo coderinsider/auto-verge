@@ -55,4 +55,12 @@ class AdminController extends Controller
         // if Username and password are authenticate
         
     }
+
+    public function usermanagementedit($id) {
+        $data = [];
+        $data['id'] = $id;
+        $data['page_title'] = " | User Create";
+        $data['current_page'] = 'usercreate';
+        return view('admin.users.edit', $data);   
+    }
 }
