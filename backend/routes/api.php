@@ -18,5 +18,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/userlists', 'UserManagementController@userslist');
+Route::post('/userlists/create', 'UserManagementController@usermanagementstore');
 Route::get('/login', 'UserManagementController@userlogin');
 Route::post('/register', 'UserManagementController@userregister');

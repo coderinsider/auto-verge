@@ -7,14 +7,11 @@ export default function UserManage() {
     const url = "http://127.0.0.1:8000/";
     useEffect(() => {
         getAllNotes();
-        console.log("WWW");
-        console.log(userLists);
     }, []);
     const getAllNotes  = () => {
         axios.get(`${url}api/userlists`)
         .then((resp) => {
             const allNotes = resp.data.data;
-            console.log(resp.data.data);
             setUserLists(resp.data.data);
         })
         .catch((error) => {
@@ -30,7 +27,7 @@ export default function UserManage() {
                         <h3>User Lists</h3>
                     </div>
                     <div className="nav-post-add">
-                        <a href="/">Add New</a>
+                        <a href="/admin/users-list/create">Add New</a>
                     </div>
                 </div>
                 <div className="backend-body-box">

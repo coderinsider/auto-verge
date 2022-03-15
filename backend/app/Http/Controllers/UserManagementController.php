@@ -13,7 +13,7 @@ class UserManagementController extends Controller
     }
 
     public function userslist() {
-        $userAll = $this->user->get();
+        $userAll = $this->user->where('userrole', 'user')->get();
         return response()->json(['data' => $userAll],200);
     }
     public function userregister(Request $req) {
@@ -43,5 +43,42 @@ class UserManagementController extends Controller
 
         // if Username and password are authenticate
         
+    }
+
+    public function usermanagementstore(Request $req) {
+        $userName = $req->input('name') ?? null;
+        $password = $req->input('password') ?? null;
+        $email = $req->input('email') ?? null;
+        $gender = $req->input('gender') ?? null;
+        $phone = $req->input('phone') ?? null;
+        if($userName != null && $password != null && $email != null) {
+            $dataRecord = [
+                'gender' => $gender,
+                'name' => $userName,
+                'phone' => $phone,
+                'email'  => $email,
+                'password' => Hash::make($password),
+                'userrole' => 'user'
+            ];
+            // finding exists user record in users db.
+            $existsUser = $this->user->where('name', $userName);
+            $existsEmail = $this->user->where('email', $email);
+            if($existsUser->exists()) {
+                return response()->json(['name' => 'Your current username is already taken in our records'], 200);
+            }
+            if($existsEmail->exists()) {
+                return response()->json(['email' => 'Your current email is already taken in our records'], 200);
+            }    
+            $createNew = $this->user->create($dataRecord);       
+            return response()->json(['status' => true, 'success' => 'Your account create successfully', 'data' => $createNew], 200); 
+        } else {
+            $phoneMessage = ($phone == null) ? 'Pease insert your  phone' : '';
+            $genderMessage =($gender == null) ? 'Select gender' : '';
+            $passwordMessage = ($password == null) ? 'Please insert password' : '';
+            $nameMessage = ($userName == null) ? "Please insert Request name":'';
+            $emailMessage = ($email== null) ? 'Please insert request email': '';
+
+            return response()->json(['status'=> false, 'phone' => $phoneMessage, 'gender' => $genderMessage, 'password' => $passwordMessage, 'name' => $nameMessage, 'email' => $emailMessage], 200);
+        }
     }
 }
