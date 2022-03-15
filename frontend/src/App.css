@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+.bodywrapper {
+  background: #2c3338;
+}
+.logo-panel {
+  width: 100px;
+}
+.header-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
