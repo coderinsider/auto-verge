@@ -27,7 +27,23 @@
 .App-link {
   color: #61dafb;
 }
-
+.flex-group-two {
+  display: flex;
+  margin-bottom: 20px;
+  align-items: center;
+}
+.flex-group-two label {
+  width: 200px;
+  display: flex;
+}
+.flex-group-two input[type="submit"] {
+  color: #fff;
+  border: 2px solid #2c3338;
+  background: #2c3338;
+  border-radius: 5px;
+  width: auto;
+  padding: 5px 25px;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -36,8 +52,17 @@
     transform: rotate(360deg);
   }
 }
+p {
+  margin: 0 !important;
+}
+.custom-card {
+  width: 80%;
+  margin: 60px auto;
+}
+
 .bodywrapper {
   background: #2c3338;
+  padding: 50px 0;
 }
 .logo-panel {
   width: 100px;
@@ -46,4 +71,20 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.menu-panel nav ul {
+  list-style-type: none;
+}
+.menu-panel nav ul {
+  display: flex;
+}
+.menu-panel nav ul li:nth-child(1) {
+  margin-left: 0;
+}
+.menu-panel nav ul li{
+  margin-left: 10px;
+}
+.menu-panel nav ul li a{
+  text-decoration: none;
+  color: #3a3a3a;
 }

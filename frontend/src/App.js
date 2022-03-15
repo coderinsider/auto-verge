@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
 import Login from './components/Login/Login';
 import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
@@ -13,7 +13,11 @@ function App() {
             </div>
             <div className="menu-panel">
                <nav>
-                  <a href="/login">Login</a>
+                  <ul>
+                     <li><a href="/">Home</a></li>
+                     <li><a href="/login">Login</a></li>
+                     <li><a href="/register">Register</a></li>
+                  </ul>
                </nav>
             </div>
          </div>
@@ -22,7 +26,6 @@ function App() {
       <section className="bodywrapper">
          <div className="App">
             <div className="wrapper">
-               <h1>Application</h1>
                <Router>
                   <Routes>
                      <Route path="/login" exact element={<Login />}/>
@@ -31,7 +34,9 @@ function App() {
             </div>
          </div>
       </section>
-      <footer></footer>
+      <footer>
+         <p style={{textAlign: 'center'}}>&copy; Copyright. 2022</p>
+      </footer>
       </>
    );
 }
