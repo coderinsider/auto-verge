@@ -10,8 +10,8 @@ export default function NoteTimeline(props) {
                             <tr>
                                 <td>{index+1}</td>
                                 <td>{user.name}</td>
-                                <td>-</td>
-                                <td>-</td>
+                                <td>{user.phone}</td>
+                                <td>{user.gender.toUpperCase()}</td>
                                 <td>
                                     <div className="imgpreview" style={{width: '50px',height: '50px'}}>
                                         <img src="/uploads/usercover/default.jpeg" style={{border: '2px solid #6CB4FF',borderRadius: '50%',width: '100%',height: '100%'}} />
@@ -26,14 +26,15 @@ export default function NoteTimeline(props) {
                                 <td>
                                     <div className="moreactions">
                                         <div className="editme">
-                                            <i className="fas fa-edit"></i> Edit
-
+                                            <button style={{background: '#fff'}} data-bs-toggle="modal" data-bs-target={"#myModaledit" + user.id}>
+                                                <a href={"/admin/user-list/edit/" + user.id} style={{textDecoration: 'none'}}><i className="fas fa-edit"></i> Edit</a>
+                                            </button>
                                         </div>
                                         <div className="deleteme"> 
-                                            <button data-bs-toggle="modal" data-bs-target="#myModal1">
+                                            <button style={{background: '#fff'}} data-bs-toggle="modal" data-bs-target={"#myModal" + user.id}>
                                                 <i className="fas fa-trash-alt"></i> Delete
                                             </button>
-                                            <div className="modal fade" id="myModal1" tabindex="-1" aria-labelledby="myModal" aria-hidden="true">
+                                            <div className="modal fade" id={"myModal" + user.id} tabindex="-1" aria-labelledby={'myModal'} aria-hidden="true">
                                                 <div className="modal-dialog">
                                                     <div className="modal-content">
                                                         <div className="modal-header">

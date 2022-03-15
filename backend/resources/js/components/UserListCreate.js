@@ -87,7 +87,7 @@ export default function UserListCreate() {
 		                    }}
 		                    className="form-control" name="lang_format">
 		                        <option value="male">Male</option>
-		                        <option value="femal">Female</option>
+		                        <option value="female">Female</option>
 		                 	</select>
 		                 	<span style={{color:'red', fontSize: '.8em'}}>{errors.gender}</span>
 		                </div>
@@ -139,7 +139,7 @@ export default function UserListCreate() {
 		            <div className="markappfooter">
 		                <div className="action-button-process">
 		                    <div className="form-group">
-		                        <button type="button" className="isAction form-control" data-bs-toggle="modal" data-bs-target="#myModal">Create New</button>		              
+		                        <button type="button" className="isAction form-control" data-bs-toggle="modal" data-bs-target=`#myModal`>Create New</button>		              
 		                        <div className="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModal" aria-hidden="true">
 		                            <div className="modal-dialog">
 		                                <div className="modal-content">

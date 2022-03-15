@@ -5644,357 +5644,9 @@ if (document.getElementById('hello-react')) {
 /*!***************************************************!*\
   !*** ./resources/js/components/UserListCreate.js ***!
   \***************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (() => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ UserListCreate)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _UserListEach__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UserListEach */ "./resources/js/components/UserListEach.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-
-
-
-
-function UserListCreate() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('male'),
-      _useState2 = _slicedToArray(_useState, 2),
-      gender = _useState2[0],
-      setGender = _useState2[1];
-
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
-      _useState4 = _slicedToArray(_useState3, 2),
-      name = _useState4[0],
-      setName = _useState4[1];
-
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
-      _useState6 = _slicedToArray(_useState5, 2),
-      phone = _useState6[0],
-      setPhone = _useState6[1];
-
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
-      _useState8 = _slicedToArray(_useState7, 2),
-      email = _useState8[0],
-      setEmail = _useState8[1];
-
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
-      _useState10 = _slicedToArray(_useState9, 2),
-      password = _useState10[0],
-      setPassword = _useState10[1];
-
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
-      _useState12 = _slicedToArray(_useState11, 2),
-      success = _useState12[0],
-      setSuccess = _useState12[1];
-
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-    name: '',
-    email: '',
-    gender: '',
-    phone: '',
-    password: ''
-  }),
-      _useState14 = _slicedToArray(_useState13, 2),
-      errors = _useState14[0],
-      setErrors = _useState14[1];
-
-  var userNew = {
-    name: name,
-    gender: gender,
-    phone: phone,
-    email: email,
-    password: password
-  };
-
-  var createUserRecord = function createUserRecord(e) {
-    var url = "http://127.0.0.1:8000/";
-    e.preventDefault();
-    var config = {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    };
-    axios__WEBPACK_IMPORTED_MODULE_3___default().post("".concat(url, "api/userlists/create"), userNew, config).then(function (resp) {
-      if (!resp.data.status) {
-        setErrors({
-          name: resp.data.name,
-          email: resp.data.email,
-          gender: resp.data.gender,
-          phone: resp.data.phone,
-          password: resp.data.password
-        });
-        setSuccess('');
-      }
-
-      if (resp.data.status) {
-        setErrors({
-          name: '',
-          email: '',
-          gender: '',
-          phone: '',
-          password: ''
-        });
-        setSuccess(resp.data.success);
-        setGender('male');
-        setName('');
-        setPhone('');
-        setEmail('');
-        setPassword('');
-      }
-
-      document.querySelector('#myModal').click();
-    })["catch"](function (error) {
-      console.log("Error: ".concat(error));
-    });
-  };
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-      className: "markappwrapper",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-        children: success
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-        className: "markappboxing",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-          className: "markappheader",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h5", {
-            children: "User Create"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("form", {
-          id: "createnow",
-          action: "#",
-          method: "post",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "form-group custom-form-group",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("label", {
-              "for": "name",
-              children: ["Display Gender", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                style: {
-                  color: 'red'
-                },
-                children: "*"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
-              onChange: function onChange(e) {
-                setGender(e.target.value);
-              },
-              className: "form-control",
-              name: "lang_format",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                value: "male",
-                children: "Male"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                value: "femal",
-                children: "Female"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-              style: {
-                color: 'red',
-                fontSize: '.8em'
-              },
-              children: errors.gender
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-            className: "markappbody",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              className: "userformdata",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                className: "form-group custom-form-group",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("label", {
-                  "for": "name",
-                  children: ["Username ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                    style: {
-                      color: 'red'
-                    },
-                    children: "*"
-                  })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-                  onChange: function onChange(e) {
-                    setName(e.target.value);
-                  },
-                  value: name,
-                  type: "text",
-                  className: "form-control",
-                  name: "category_name",
-                  placeholder: "Username"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                  style: {
-                    color: 'red',
-                    fontSize: '.8em'
-                  },
-                  children: errors.name
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                className: "form-group custom-form-group",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("label", {
-                  "for": "email",
-                  children: ["Phone ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                    style: {
-                      color: 'red'
-                    },
-                    children: "*"
-                  })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-                  onChange: function onChange(e) {
-                    setPhone(e.target.value);
-                  },
-                  value: phone,
-                  type: "text",
-                  className: "form-control",
-                  name: "category_des",
-                  placeholder: "Phone"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                  style: {
-                    color: 'red',
-                    fontSize: '.8em'
-                  },
-                  children: errors.phone
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                className: "form-group custom-form-group",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("label", {
-                  "for": "email",
-                  children: ["Email ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                    style: {
-                      color: 'red'
-                    },
-                    children: "*"
-                  })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-                  onChange: function onChange(e) {
-                    setEmail(e.target.value);
-                  },
-                  value: email,
-                  type: "email",
-                  className: "form-control",
-                  name: "category_des",
-                  placeholder: "Email"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                  style: {
-                    color: 'red',
-                    fontSize: '.8em'
-                  },
-                  children: errors.email
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                className: "form-group custom-form-group",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("label", {
-                  "for": "email",
-                  children: ["Password ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                    style: {
-                      color: 'red'
-                    },
-                    children: "*"
-                  })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-                  onChange: function onChange(e) {
-                    setPassword(e.target.value);
-                  },
-                  value: password,
-                  type: "password",
-                  className: "form-control",
-                  name: "category_des",
-                  placeholder: "Password"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                  style: {
-                    color: 'red',
-                    fontSize: '.8em'
-                  },
-                  children: errors.password
-                })]
-              })]
-            })
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-          className: "markappfooter",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-            className: "action-button-process",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              className: "form-group",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                type: "button",
-                className: "isAction form-control",
-                "data-bs-toggle": "modal",
-                "data-bs-target": "#myModal",
-                children: "Create New"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                className: "modal fade",
-                id: "myModal",
-                tabindex: "-1",
-                "aria-labelledby": "myModal",
-                "aria-hidden": "true",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                  className: "modal-dialog",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                    className: "modal-content",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                      className: "modal-header",
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h5", {
-                        className: "modal-title",
-                        id: "exampleModalLabel",
-                        children: "User Record"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                        type: "button",
-                        className: "btn-close",
-                        "data-bs-dismiss": "modal",
-                        "aria-label": "Close"
-                      })]
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                      className: "modal-body",
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                        className: "asktouser",
-                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-                          children: "Are you sure want to create record?"
-                        })
-                      })
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                      className: "modal-footer",
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                        type: "button",
-                        className: "btn btn-secondary",
-                        "data-bs-dismiss": "modal",
-                        children: "Close"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                        type: "button",
-                        className: "btn btn-primary",
-                        onClick: createUserRecord,
-                        children: "Create"
-                      })]
-                    })]
-                  })
-                })
-              })]
-            })
-          })
-        })]
-      })]
-    })
-  });
-}
-
-if (document.getElementById('user-manage-create')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_2__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(UserListCreate, {}), document.getElementById('user-manage-create'));
-}
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/myatkoko/Desktop/shwe/backend/resources/js/components/UserListCreate.js: JSX value should be either an expression or a quoted JSX text. (142:120)\n\n\u001b[0m \u001b[90m 140 |\u001b[39m \t\t                \u001b[33m<\u001b[39m\u001b[33mdiv\u001b[39m className\u001b[33m=\u001b[39m\u001b[32m\"action-button-process\"\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 141 |\u001b[39m \t\t                    \u001b[33m<\u001b[39m\u001b[33mdiv\u001b[39m className\u001b[33m=\u001b[39m\u001b[32m\"form-group\"\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 142 |\u001b[39m \t\t                        \u001b[33m<\u001b[39m\u001b[33mbutton\u001b[39m type\u001b[33m=\u001b[39m\u001b[32m\"button\"\u001b[39m className\u001b[33m=\u001b[39m\u001b[32m\"isAction form-control\"\u001b[39m data\u001b[33m-\u001b[39mbs\u001b[33m-\u001b[39mtoggle\u001b[33m=\u001b[39m\u001b[32m\"modal\"\u001b[39m data\u001b[33m-\u001b[39mbs\u001b[33m-\u001b[39mtarget\u001b[33m=\u001b[39m\u001b[32m`#myModal`\u001b[39m\u001b[33m>\u001b[39m\u001b[33mCreate\u001b[39m \u001b[33mNew\u001b[39m\u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mbutton\u001b[39m\u001b[33m>\u001b[39m\t\t              \u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m \t\t                                                                                                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 143 |\u001b[39m \t\t                        \u001b[33m<\u001b[39m\u001b[33mdiv\u001b[39m className\u001b[33m=\u001b[39m\u001b[32m\"modal fade\"\u001b[39m id\u001b[33m=\u001b[39m\u001b[32m\"myModal\"\u001b[39m tabindex\u001b[33m=\u001b[39m\u001b[32m\"-1\"\u001b[39m aria\u001b[33m-\u001b[39mlabelledby\u001b[33m=\u001b[39m\u001b[32m\"myModal\"\u001b[39m aria\u001b[33m-\u001b[39mhidden\u001b[33m=\u001b[39m\u001b[32m\"true\"\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 144 |\u001b[39m \t\t                            \u001b[33m<\u001b[39m\u001b[33mdiv\u001b[39m className\u001b[33m=\u001b[39m\u001b[32m\"modal-dialog\"\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 145 |\u001b[39m \t\t                                \u001b[33m<\u001b[39m\u001b[33mdiv\u001b[39m className\u001b[33m=\u001b[39m\u001b[32m\"modal-content\"\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n    at Object._raise (/Users/myatkoko/Desktop/shwe/backend/node_modules/@babel/parser/lib/index.js:476:17)\n    at Object.raiseWithData (/Users/myatkoko/Desktop/shwe/backend/node_modules/@babel/parser/lib/index.js:469:17)\n    at Object.raise (/Users/myatkoko/Desktop/shwe/backend/node_modules/@babel/parser/lib/index.js:430:17)\n    at Object.jsxParseAttributeValue (/Users/myatkoko/Desktop/shwe/backend/node_modules/@babel/parser/lib/index.js:7619:20)\n    at Object.jsxParseAttribute (/Users/myatkoko/Desktop/shwe/backend/node_modules/@babel/parser/lib/index.js:7665:38)\n    at Object.jsxParseOpeningElementAfterName (/Users/myatkoko/Desktop/shwe/backend/node_modules/@babel/parser/lib/index.js:7685:28)\n    at Object.jsxParseOpeningElementAt (/Users/myatkoko/Desktop/shwe/backend/node_modules/@babel/parser/lib/index.js:7678:17)\n    at Object.jsxParseElementAt (/Users/myatkoko/Desktop/shwe/backend/node_modules/@babel/parser/lib/index.js:7710:33)\n    at Object.jsxParseElementAt (/Users/myatkoko/Desktop/shwe/backend/node_modules/@babel/parser/lib/index.js:7726:32)\n    at Object.jsxParseElementAt (/Users/myatkoko/Desktop/shwe/backend/node_modules/@babel/parser/lib/index.js:7726:32)");
 
 /***/ }),
 
@@ -6028,9 +5680,9 @@ function NoteTimeline(props) {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
             children: user.name
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            children: "-"
+            children: user.phone
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            children: "-"
+            children: user.gender.toUpperCase()
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
               className: "imgpreview",
@@ -6061,24 +5713,40 @@ function NoteTimeline(props) {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
               className: "moreactions",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
                 className: "editme",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
-                  className: "fas fa-edit"
-                }), " Edit"]
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+                  style: {
+                    background: '#fff'
+                  },
+                  "data-bs-toggle": "modal",
+                  "data-bs-target": "#myModaledit" + user.id,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
+                    href: "/admin/user-list/edit/" + user.id,
+                    style: {
+                      textDecoration: 'none'
+                    },
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+                      className: "fas fa-edit"
+                    }), " Edit"]
+                  })
+                })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
                 className: "deleteme",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("button", {
+                  style: {
+                    background: '#fff'
+                  },
                   "data-bs-toggle": "modal",
-                  "data-bs-target": "#myModal1",
+                  "data-bs-target": "#myModal" + user.id,
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
                     className: "fas fa-trash-alt"
                   }), " Delete"]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
                   className: "modal fade",
-                  id: "myModal1",
+                  id: "myModal" + user.id,
                   tabindex: "-1",
-                  "aria-labelledby": "myModal",
+                  "aria-labelledby": 'myModal',
                   "aria-hidden": "true",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
                     className: "modal-dialog",
