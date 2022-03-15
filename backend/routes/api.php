@@ -17,5 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('/userlists', 'UserManagementController@userslist');
 Route::get('/login', 'UserManagementController@userlogin');
 Route::post('/register', 'UserManagementController@userregister');

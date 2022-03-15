@@ -5,7 +5,9 @@
 </ol>
 @endsection
 @section('content')
-aaa
+<section>
+    <div id="user-manage"></div>
+</section>
 @include('admin.inc.messagestatus')
 @endsection
 @section('script')

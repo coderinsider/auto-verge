@@ -11,6 +11,11 @@ class UserManagementController extends Controller
     public function __construct(User $user) {
         $this->user = $user;
     }
+
+    public function userslist() {
+        $userAll = $this->user->get();
+        return response()->json(['data' => $userAll],200);
+    }
     public function userregister(Request $req) {
         $userName = $req->input('name') ?? null;
         $password = $req->input('password') ?? null;
