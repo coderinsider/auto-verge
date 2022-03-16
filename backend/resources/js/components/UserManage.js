@@ -43,7 +43,7 @@ export default function UserManage() {
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
-                            <UserListEach userLists={userLists} />
+                            <UserListEach userLists={userLists}/>
                         </table>
                     </div>
                 </div>

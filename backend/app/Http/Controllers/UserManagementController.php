@@ -138,4 +138,15 @@ class UserManagementController extends Controller
         }
 
     }
+    public function usermanagementdelete($id, Request $req) {
+        $findRecord = $this->user->where('id', $id);
+        if($findRecord->exists()) {
+            $deleteNow = $findRecord->delete();
+            if($deleteNow) {
+                return response()->json(['status' => true, 'success' => 'Your account edit successfully'], 200); 
+            }
+        } else {
+            return response()->json(['status' => false, 'failed' => 'Sorry, We can\'t find current record.'], 200);
+        }
+    }
 }

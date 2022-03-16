@@ -21,5 +21,6 @@ Route::get('/userlists', 'UserManagementController@userslist');
 Route::post('/userlists/create', 'UserManagementController@usermanagementstore');
 Route::get('/userlists/edit/current/{id}', 'UserManagementController@usermanagementcurrent');
 Route::post('/userlists/edit/{id}', 'UserManagementController@usermanagementupdate');
+Route::post('/userlists/delete/{id}', 'UserManagementController@usermanagementdelete');
 Route::get('/login', 'UserManagementController@userlogin');
 Route::post('/register', 'UserManagementController@userregister');

@@ -1,7 +1,25 @@
-import React from 'react';
+import React , {useState, useCallback} from 'react';
+import axios from 'axios';
 export default function UserListEach(props) {
 	const displayUserUI = (props) => {
+        const [success, setSuccess] = useState('');
 		const {  userLists } = props;
+        const [updateLists, setUpdateLists] = useState('');
+        const userAccountDelete = (e) => {
+            const itemIndex = e.currentTarget.getAttribute('itemIndex');
+            const id = e.currentTarget.getAttribute("data-id");
+            axios.post(`/api/userlists/delete/${id}`, null)
+            .then((resp) => {
+                console.log("SUCCESS");
+                document.querySelector(`#myModal${id}`).click();
+                
+                userLists.splice(itemIndex, 1);
+                console.log(userLists)
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        } 
 		if(userLists.length > 0) {
 			return (
 				userLists.map((user,index) => {
@@ -48,8 +66,7 @@ export default function UserListEach(props) {
                                                     </div>
                                                     <div className="modal-footer">
                                                         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                        <button type="button" className="btn btn-primary">Delete</button>
-                                                        <form id="deletenow1" method="post" action=""></form>
+                                                        <button type="button" className="btn btn-primary" itemIndex={user} data-id={user.id} onClick={userAccountDelete}>Delete</button>
                                                     </div>
                                                 </div>
                                             </div>
