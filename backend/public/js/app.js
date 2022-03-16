@@ -6434,6 +6434,9 @@ function ServiceCreate() {
     };
     axios.post('/api/services/create', newServiceRecord, config).then(function (resp) {
       if (resp.data.status) {
+        axios.post("/api/emailbooking", {
+          email: customerEmail
+        }, config).then(function (resp) {})["catch"](function (error) {});
         setSuccess(resp.data.success);
         setCustomerName("");
         setCustomerEmail("");

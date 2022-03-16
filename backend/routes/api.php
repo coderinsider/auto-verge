@@ -2,7 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\EmailBookingNotificationController;
+use App\Http\Controllers\BookingCompleteNotificationController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -38,3 +39,7 @@ Route::post('/services-lists/delete/{id}', 'UserManagementController@servicelist
 
 Route::get('/login', 'UserManagementController@userlogin');
 Route::post('/register', 'UserManagementController@userregister');
+
+// EMAIL NOTIFICATION
+Route::post('/emailbooking', [EmailBookingNotificationController::class, 'subscribe']);
+Route::post('/completebooking', [BookingCompleteNotificationController::class, 'subscribe']);

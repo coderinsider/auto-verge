@@ -43,6 +43,13 @@ export default function ServiceCreate() {
 		axios.post('/api/services/create', newServiceRecord, config)
 		.then((resp) => {
 			if(resp.data.status) {
+				axios.post(`/api/emailbooking`, {email: customerEmail}, config)
+				.then((resp) => {
+
+				})
+				.catch((error) => {
+
+				});
 				setSuccess(resp.data.success);
 				setCustomerName("");
 				setCustomerEmail("");
@@ -50,6 +57,7 @@ export default function ServiceCreate() {
 				setAdditionalServices("");
 				setDuration("");
 				setDescription("");
+				
 			} else {
 				setSuccess("");
 			}
