@@ -28,7 +28,8 @@ For Frontend. You need to do something. Example
 cd auto-verge/backend/
 npm install && npm run dev
 ```
-
+### Login User and Password
+http://127.0.1:8000/login
 ### Account Information
 
 | Username | Password |
