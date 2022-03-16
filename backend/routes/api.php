@@ -29,5 +29,12 @@ Route::post('/services/create', 'UserManagementController@servicecreate');
 Route::get('/services/edit/current/{id}', 'UserManagementController@serviceeditcurrent');
 Route::post('/services/edit/{id}', 'UserManagementController@serviceedit');
 Route::post('/services/delete/{id}', 'UserManagementController@servicedelete');
+
+Route::get('/services-lists/lists','UserManagementController@servicelistsall');
+Route::post('/services-lists/create', 'UserManagementController@servicelistcreate');
+Route::get('/services-lists/edit/current/{id}','UserManagementController@servicelisteditcurrent');
+Route::post('/services-lists/edit/{id}','UserManagementController@servicelistedit');
+Route::post('/services-lists/delete/{id}', 'UserManagementController@servicelistdelete');
+
 Route::get('/login', 'UserManagementController@userlogin');
 Route::post('/register', 'UserManagementController@userregister');

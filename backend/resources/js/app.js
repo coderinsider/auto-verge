@@ -6,6 +6,9 @@ require('./components/UserListCreate')
 require('./components/Services/Services')
 require('./components/Services/ServiceCreate')
 require('./components/Services/ServiceEdit')
+require('./components/ServiceLists/ServiceList')
+require('./components/ServiceLists/ServiceListCreate')
+require('./components/ServiceLists/ServiceListEdit');
 import UserEdit from './components/UserEdit';
 import Alpine from 'alpinejs';
 

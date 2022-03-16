@@ -8,9 +8,13 @@
             <img src="{{ asset('uploads/menu/monitor.png') }}">
             <a href="/admin/users-list">Users Manage</a>
         </li>        
-        <li class="{{ ($current_page == 'Services') ? 'navmenuactive' : 'navmenudeactive'}}">
+        <li class="{{ ($current_page == 'services') ? 'navmenuactive' : 'navmenudeactive'}}">
             <img src="{{ asset('uploads/menu/monitor.png') }}">
-            <a href="/admin/services">Services</a>
-        </li>            
+            <a href="/admin/services">Booking</a>
+        </li>      
+        <li class="{{ ($current_page == 'services') ? 'navmenuactive' : 'navmenudeactive'}}">
+            <img src="{{ asset('uploads/menu/monitor.png') }}">
+            <a href="/admin/our-services">Services</a>
+        </li>     
     </ul>
 </div>

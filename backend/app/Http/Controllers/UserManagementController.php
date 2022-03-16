@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\CarService;
+use App\Models\ServiceLists;
 class UserManagementController extends Controller
 {
     //
-    public function __construct(User $user,CarService $service) {
+    public function __construct(User $user,CarService $service, ServiceLists $servicelists) {
         $this->user = $user;
-        $this->service = $service; 
+        $this->service = $service;
+        $this->servicelists = $servicelists;
     }
 
     public function userslist() {
@@ -229,5 +231,61 @@ class UserManagementController extends Controller
         } else {
             return response()->json(['status' => false, 'failed' => 'Sorry, We can\'t find current record.'], 200);
         }        
+    }
+
+
+    public function servicelistsall() {
+        $findAll = $this->servicelists->get();
+        if($findAll) {
+            return response()->json(['status' => true, 'data' => $findAll],200);
+        } else {
+            return response()->json(['status' => false, 'message' => 'data'], 200);
+        }        
+    }
+    public function servicelistcreate(Request $req) {
+        $service_name =  $req->input('service_name') ?? "";
+
+        $insertOne = [
+            'service_name' => $service_name
+        ];
+        $createOne = $this->servicelists->create($insertOne);
+
+        //return response()->json(['data' => 'Working'], 200);
+        if($createOne) {
+            return response()->json(['status' => true, 'success' => 'Services create successfully', 'data' => $createOne], 200);
+        } else {
+            return response()->json(['status' => false, 'failed' => 'Failed. Something went wrong'], 200);
+        }
+    }
+
+    public function servicelisteditcurrent($id) {
+        $findRecord = $this->servicelists->find($id);
+        if($findRecord) {
+            return response()->json(['status' => true, 'data' => $findRecord],200);
+        }
+        return response()->json(['status' => false, 'message'  => 'Sorry, user doens\'t exists'], 200);
+    }
+    public function servicelistedit($id, Request $req) {
+        $service_name =  $req->input('service_name') ?? "";
+        $updateOne = [
+            'service_name' => $service_name
+        ];
+        $updateRecord = $this->servicelists->where('id', $id)->update($updateOne);
+        if($updateRecord) {
+            return response()->json(['status' => true, 'success' => 'Service package update successfully', 'data' => $updateRecord], 200);
+        } else {
+            return response()->json(['status' => false, 'failed' => 'Failed. Something went wrong'], 200);
+        }            
+    }
+    public function servicelistdelete($id) {
+        $findRecord = $this->servicelists->where('id', $id);
+        if($findRecord->exists()) {
+            $deleteNow = $findRecord->delete();
+            if($deleteNow) {
+                return response()->json(['status' => true, 'success' => 'Your service package delete successfully'], 200); 
+            }
+        } else {
+            return response()->json(['status' => false, 'failed' => 'Sorry, We can\'t find current record.'], 200);
+        }    
     }
 }

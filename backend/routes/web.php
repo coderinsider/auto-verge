@@ -21,6 +21,9 @@ Route::get('/admin/users-list', 'AdminController@usermanagement')->middleware('a
 Route::get('/admin/users-list/create', 'AdminController@usermanagementcreate')->middleware('auth');
 Route::get('/admin/user-list/edit/{id}', 'AdminController@usermanagementedit')->middleware('auth');
 
+Route::get('/admin/our-services', 'AdminController@ourservicelist')->middleware('auth');
+Route::get('/admin/our-services/create', 'AdminController@ourservicecreate')->middleware('auth');
+Route::get('/admin/our-services/edit/{id}', 'AdminController@ourserviceedit')->middleware('auth');
 Route::get('/admin/services', 'AdminController@carservices')->middleware('auth');
 Route::get('/admin/services/create', 'AdminController@carservicecreate')->middleware('auth');
 Route::get('/admin/services/edit/{id}', 'AdminController@carserviceedit')->middleware('auth');

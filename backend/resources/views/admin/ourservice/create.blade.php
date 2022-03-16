@@ -1,12 +1,12 @@
 @extends('admin.layout.app')
 @section('breadcrumb')
 <ol class="breadcrumb custombreadcrumb">
-    <li class="bread-item active" aria-current="page"><a href="#"><h4>Booking</h4></a></li>
+    <li class="bread-item active" aria-current="page"><a href="#"><h4>Services</h4></a></li>
 </ol>
 @endsection
 @section('content')
 <section>
-    <div id="car-services-create"></div>
+    <div id="car-services-lists-create"></div>
 </section>
 @include('admin.inc.messagestatus')
 @endsection

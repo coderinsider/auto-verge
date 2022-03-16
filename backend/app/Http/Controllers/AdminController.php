@@ -67,22 +67,44 @@ class AdminController extends Controller
     /* Car Services */
     public function carservices() {
         $data = [];
-        $data['page_title'] = " | Services";
-        $data['current_page'] = 'services';
+        $data['page_title'] = " | Booking";
+        $data['current_page'] = 'booking';
         return view('admin.service.index', $data);          
     }
     public function carservicecreate() {
         $data = [];
-        $data['page_title'] = " | Create Services";
-        $data['current_page'] = 'create-services';
+        $data['page_title'] = " | Create Booking";
+        $data['current_page'] = 'create-booking';
         return view('admin.service.create', $data);  
     }
 
     public function carserviceedit($id) {
         $data = [];
         $data['id'] = $id;
-        $data['page_title'] = " | Edit Services";
-        $data['current_page'] = 'edit-services';
+        $data['page_title'] = " | Edit Booking";
+        $data['current_page'] = 'edit-booking';
         return view('admin.service.edit', $data);
+    }
+
+    // OuR Services
+    public function ourservicelist() {
+        $data = [];
+        $data['page_title'] = " | Services";
+        $data['current_page'] = 'servicesx';
+        return view('admin.ourservice.index', $data);         
+    }
+
+    public function ourservicecreate() {
+        $data = [];
+        $data['page_title'] = " | Services Create";
+        $data['current_page'] = 'servicesx';
+        return view('admin.ourservice.create', $data);          
+    }
+    public function ourserviceedit($id) {
+        $data = [];
+        $data['id'] = $id;
+        $data['page_title'] = " | Services Edit";
+        $data['current_page'] = 'servicesx';
+        return view('admin.ourservice.edit', $data);            
     }
 }
