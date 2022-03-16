@@ -5,11 +5,13 @@ use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\CarService;
 class UserManagementController extends Controller
 {
     //
-    public function __construct(User $user) {
+    public function __construct(User $user,CarService $service) {
         $this->user = $user;
+        $this->service = $service; 
     }
 
     public function userslist() {
@@ -143,10 +145,89 @@ class UserManagementController extends Controller
         if($findRecord->exists()) {
             $deleteNow = $findRecord->delete();
             if($deleteNow) {
-                return response()->json(['status' => true, 'success' => 'Your account edit successfully'], 200); 
+                return response()->json(['status' => true, 'success' => 'Your account delete successfully'], 200); 
             }
         } else {
             return response()->json(['status' => false, 'failed' => 'Sorry, We can\'t find current record.'], 200);
         }
+    }
+
+    /* Car Services */
+    public function serviceslists() {
+        $findAll = $this->service->where('customer_name', '!=', '')->get();
+        if($findAll) {
+            return response()->json(['status' => true, 'data' => $findAll],200);
+        } else {
+            return response()->json(['status' => false, 'message' => 'data'], 200);
+        }
+        
+    }
+
+    public function servicecreate(Request $req) {
+        $customer_name =  $req->input('customer_name') ?? "";
+        $customer_email = $req->input('customer_email') ?? "";
+        $car_number = $req->input('car_number') ?? "";
+        $additional_service = $req->input('additional_service') ?? '';
+        $duration = $req->input('duration') ?? "";
+        $description = $req->input('description') ?? "";
+        $insertOne = [
+            'customer_name' => $customer_name,
+            'customer_email' => $customer_email,
+            'car_number' => $car_number,
+            'additional_service' => $additional_service,
+            'duration' => $duration,
+            'description' => $description
+        ];
+        $createOne = $this->service->create($insertOne);
+
+        //return response()->json(['data' => 'Working'], 200);
+        if($createOne) {
+            return response()->json(['status' => true, 'success' => 'Services create successfully', 'data' => $createOne], 200);
+        } else {
+            return response()->json(['status' => false, 'failed' => 'Failed. Something went wrong'], 200);
+        }
+        
+    }
+    public function serviceeditcurrent($id) {
+        $findRecord = $this->service->find($id);
+        if($findRecord) {
+            return response()->json(['status' => true, 'data' => $findRecord],200);
+        }
+        return response()->json(['status' => false, 'message'  => 'Sorry, user doens\'t exists'], 200);
+    }
+    public function serviceedit($id, Request $req) {
+        $customer_name =  $req->input('customer_name') ?? "";
+        $customer_email = $req->input('customer_email') ?? "";
+        $car_number = $req->input('car_number') ?? "";
+        $additional_service = $req->input('additional_service') ?? '';
+        $duration = $req->input('duration') ?? "";
+        $description = $req->input('description') ?? "";
+        $insertOne = [
+            'customer_name' => $customer_name,
+            'customer_email' => $customer_email,
+            'car_number' => $car_number,
+            'additional_service' => $additional_service,
+            'duration' => $duration,
+            'description' => $description
+        ];
+        $createOne = $this->service->where('id', $id)->update($insertOne);
+
+        //return response()->json(['data' => 'Working'], 200);
+        if($createOne) {
+            return response()->json(['status' => true, 'success' => 'Services update successfully', 'data' => $createOne], 200);
+        } else {
+            return response()->json(['status' => false, 'failed' => 'Failed. Something went wrong'], 200);
+        }        
+    }
+    public function servicedelete($id) {
+        $findRecord = $this->service->where('id', $id);
+        if($findRecord->exists()) {
+            $deleteNow = $findRecord->delete();
+            if($deleteNow) {
+                return response()->json(['status' => true, 'success' => 'Your service delete successfully'], 200); 
+            }
+        } else {
+            return response()->json(['status' => false, 'failed' => 'Sorry, We can\'t find current record.'], 200);
+        }        
     }
 }

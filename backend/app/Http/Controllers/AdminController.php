@@ -63,4 +63,26 @@ class AdminController extends Controller
         $data['current_page'] = 'usercreate';
         return view('admin.users.edit', $data);   
     }
+
+    /* Car Services */
+    public function carservices() {
+        $data = [];
+        $data['page_title'] = " | Services";
+        $data['current_page'] = 'services';
+        return view('admin.service.index', $data);          
+    }
+    public function carservicecreate() {
+        $data = [];
+        $data['page_title'] = " | Create Services";
+        $data['current_page'] = 'create-services';
+        return view('admin.service.create', $data);  
+    }
+
+    public function carserviceedit($id) {
+        $data = [];
+        $data['id'] = $id;
+        $data['page_title'] = " | Edit Services";
+        $data['current_page'] = 'edit-services';
+        return view('admin.service.edit', $data);
+    }
 }

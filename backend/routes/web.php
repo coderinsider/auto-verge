@@ -22,6 +22,9 @@ Route::get('/admin/users-list/create', 'AdminController@usermanagementcreate')->
 Route::get('/admin/user-list/edit/{id}', 'AdminController@usermanagementedit')->middleware('auth');
 
 Route::get('/admin/services', 'AdminController@carservices')->middleware('auth');
+Route::get('/admin/services/create', 'AdminController@carservicecreate')->middleware('auth');
+Route::get('/admin/services/edit/{id}', 'AdminController@carserviceedit')->middleware('auth');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

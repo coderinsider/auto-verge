@@ -15,12 +15,12 @@ class CreateServiceManage extends Migration
     {
         Schema::create('service_manage', function (Blueprint $table) {
             $table->id();
+            $table->string('customer_name')->nullable();
+            $table->string('customer_email')->nullable();
             $table->string('car_number')->nullable();
-            $table->string('car_brand')->nullable();
-            $table->string('car_parking')->nullable();
-            $table->string('car_washing')->nullable();
-            $table->string('car_polishing')->nullable();
-            $table->string('car_repair')->nullable();
+            $table->string('additional_service')->nullable();
+            $table->string('duration')->nullable();
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }
