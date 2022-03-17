@@ -8,9 +8,12 @@ Auto Verge is a car service web application  system.
 
 Install the dependencies and devDependencies and start the server.
 Open your terminal. and then start run following commands.
+
+
 ```sh
 git clone https://github.com/coderinsider/auto-verge.git
 ```
+Let create MySQL database name is "auto_verge"
 
 and then. Go to backend directory.
 ```sh
