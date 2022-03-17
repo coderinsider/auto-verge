@@ -288,4 +288,17 @@ class UserManagementController extends Controller
             return response()->json(['status' => false, 'failed' => 'Sorry, We can\'t find current record.'], 200);
         }    
     }
+    public function statuscomplete($id) {
+        $findRecord = $this->service->where('id', $id);
+        if($findRecord->exists()) {
+            $updateOne = $findRecord->update([
+                'status' => 'complete'
+            ]);
+            if($updateOne) {
+               return response()->json(['status' => true, 'mail' => $findRecord->first(['customer_email'])->customer_email, 'success' => 'Your booking status change successfully'], 200);  
+            }
+        } else {
+            return response()->json(['status' => false, 'failed' => 'Sorry, We can\'t find current record.'], 200);
+        }
+    }
 }

@@ -20,6 +20,7 @@ class CreateServiceManage extends Migration
             $table->string('car_number')->nullable();
             $table->string('additional_service')->nullable();
             $table->string('duration')->nullable();
+            $table->string('status')->nullable();
             $table->string('description')->nullable();
             $table->timestamps();
         });

@@ -39,6 +39,7 @@ export default function Services() {
                                 <th>Car Number</th>
                                 <th>Additional Services</th>
                                 <th>Duration</th>
+                                <th>Status</th>
                                 <th>Desicription</th>
                                 <th>Actions</th>
                             </tr>

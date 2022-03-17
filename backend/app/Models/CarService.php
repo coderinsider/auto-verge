@@ -10,6 +10,6 @@ class CarService extends Model
     //     'car_number', 'car_brand', 'car_parking', 'car_washing', 'car_polishing', 'car_repair'
     // ];
     protected $fillable = [
-        'customer_name', 'customer_email', 'car_number', 'additional_service', 'duration', 'description'
+        'customer_name', 'customer_email', 'car_number', 'additional_service', 'duration', 'status', 'description'
     ];
 }

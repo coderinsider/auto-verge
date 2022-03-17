@@ -381,3 +381,10 @@ input:checked + .slider:before {
     border: 1px solid #ddd;
     border-radius: 10px;
 }
+.button-complete {
+    border: 2px solid #6cB4ff;
+    color: #6cB4ff;
+    padding: 3px 15px !important;
+    border-radius: 10px;
+    margin: 0 !important;
+}

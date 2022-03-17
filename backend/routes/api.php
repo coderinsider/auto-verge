@@ -37,6 +37,9 @@ Route::get('/services-lists/edit/current/{id}','UserManagementController@service
 Route::post('/services-lists/edit/{id}','UserManagementController@servicelistedit');
 Route::post('/services-lists/delete/{id}', 'UserManagementController@servicelistdelete');
 
+
+Route::post('/booking/status/complete/{id}', 'UserManagementController@statuscomplete');
+
 Route::get('/login', 'UserManagementController@userlogin');
 Route::post('/register', 'UserManagementController@userregister');
 
