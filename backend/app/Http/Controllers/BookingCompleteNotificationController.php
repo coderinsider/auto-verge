@@ -12,13 +12,13 @@ class BookingCompleteNotificationController extends Controller
 {
     public function subscribe(Request $request) 
     {
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email|unique:users'
-        ]);
+        // $validator = Validator::make($request->all(), [
+        //     'email' => 'required|email|unique:users'
+        // ]);
 
-        if ($validator->fails()) {
-            return new JsonResponse(['success' => false, 'message' => $validator->errors()], 422);
-        }  
+        // if ($validator->fails()) {
+        //     return new JsonResponse(['success' => false, 'message' => $validator->errors()], 422);
+        // }  
 
         $email = $request->all()['email'];
         //     $subscriber = Subscriber::create([

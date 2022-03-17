@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') . $page_title }}</title>
+        <title>{{ config('app.name', 'Laravel') . $page_title ?? '' }}</title>
         <!-- Styles -->
         <meta name="theme-color" content="#eaedef" />
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('uploads/apple-touch-icon.png') }}" />
@@ -27,11 +27,11 @@
         <section id="mainwrapper" style="display: flex;">
             <article id="dashboardleft" style="width: 50px;background: #4392F1; height: 100vh;" class="sidenav">
                 <div class="app-logo-view-head">
-                    <div class="app-logo-img" style="margin: 0 10px;width: 30px;">
-                        <img src="{{ asset('uploads/zaychin-icon-sm.png') }}">
+                    <div class="app-logo-img" style="margin: 0 10px;width: 10px;">
+                        <img src="https://laravel.com/img/logomark.min.svg" style="width:20px;">
                     </div>
                     <div class="app-logo-name justshowme">
-                        <h3>Zay Chin</h3>
+                        <h3>Auto Van</h3>
                     </div>
                 </div>
                 @include('admin.inc.nav-menu')
@@ -58,8 +58,14 @@
                                     <div class="bodyuser"></div>
                                 </div>
                                 <div class="accountusercontent">
-                                    <div class="accountusername"><p>Myat Ko Ko</p></div>
-                                    <div class="accountuserrole"><p>Admin</p></div>
+                                    <div class="accountusername">
+                                        @if(Auth::check())
+                                        <p>{{ Auth::user()->name }}</p></div>
+                                        @endif
+                                    <div class="accountuserrole"><p style="cursor: pointer" onclick="event.preventDefault();getElementById('logout').submit()">Logout</p></div>
+                                    <form id="logout" action="/logout" method="post">
+                                        @csrf
+                                    </form>
                                 </div>
                             </div>
                         </div>
